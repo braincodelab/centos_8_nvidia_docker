@@ -29,3 +29,11 @@ sudo dnf install libglvnd-devel elfutils-libelf-devel
 
 # might need to sudo su next line
 sudo grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0"
+
+# restart and then install nvidia driver
+reboot
+systemctl isolate multi-user.target
+
+# When prompted answer YES to installation of NVIDIA's 32-bit compatibility libraries, overwrite existing libglvnd files and #automatic update of your X configuration file.
+
+reboot
