@@ -1,0 +1,31 @@
+sudo yum install -y yum-utils
+yum repolist
+dnf repolist
+sudo yum install -y device-mapper-persistent-data
+sudo yum install lvm2
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+sudo dnf repolist -v
+sudo dnf install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+sudo yum install docker-ce
+sudo systemctl disable firewalld
+sudo systemctl enable --now docker
+systemctl is-active docker
+systemctl is-enabled docker
+
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | sudo tee /etc/yum.repos.d/nvidia-docker.repo
+sudo yum install -y nvidia-container-toolkit
+sudo systemctl restart docker
+
+#examine your cards data
+lspci -vnn | grep VGA
+
+# go to nvidia drivers page and download
+sudo chmod +x ./NVIDIA-Linux-x86_64-440.64.run 
+sudo ./NVIDIA-Linux-x86_64-440.64.run
+
+sudo dnf groupinstall "Development Tools"
+sudo dnf install libglvnd-devel elfutils-libelf-devel
+
+# might need to sudo su next line
+sudo grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0"
