@@ -1,0 +1,12 @@
+# details to get into docker, you need a docker hub account and this avoids using root to run docker
+
+docker login
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+
+# make sure there is GPU passthrough by running 
+docker run --gpus all --rm nvidia/cuda nvidia-smi
+
+# pull a tf docker and go
+docker pull tensorflow/tensorflow:latest-gpu-jupyter
+
