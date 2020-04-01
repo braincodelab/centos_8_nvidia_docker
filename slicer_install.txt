@@ -1,0 +1,2 @@
+# libnsl no longer part of glibc
+sudo dnf install libnsl
