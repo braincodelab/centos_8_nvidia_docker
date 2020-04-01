@@ -1,1 +1,8 @@
+# basic run commands
 docker run --gpus all -it --rm -v /home/ms:/home -p 8888:8888 msharrock/neuroimage:2.1
+
+#clean up containers
+docker system prune -a
+
+# to remove all images
+docker rmi $(docker images -a -q)
