@@ -1,0 +1,1 @@
+docker run --gpus all -it --rm -v /home/ms:/home -p 8888:8888 msharrock/neuroimage:2.1
