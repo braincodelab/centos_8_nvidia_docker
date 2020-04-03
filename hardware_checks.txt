@@ -1,2 +1,2 @@
 # examine occupied slots memory modules
-
+sudo dmidecode --type 17 | more
