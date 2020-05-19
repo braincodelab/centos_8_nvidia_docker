@@ -1,0 +1,10 @@
+sudo rpm --import http://elrepo.org/RPM-GPG-KEY-elrepo.org
+yum install https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+
+sudo yum install kmod-hfs
+sudo yum install kmod-hfsplus
+sudo yum install hfsplus-tools
+
+
+#confirm install
+rpm -qa | grep hfsplus
